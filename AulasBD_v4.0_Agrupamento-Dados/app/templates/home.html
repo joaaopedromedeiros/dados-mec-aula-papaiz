@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block titulo_pagina %}
     <h2>Home</h2>
@@ -6,6 +7,9 @@
 
 {% block conteudo %}
     <h3>Seja bem vindo!!!</h3>
+    <h4>Projeto desenvolvido por: João Pedro, informática para internet 3V</h4>
+    <img src="{% static 'imagens/joao.jpg' %}" alt="" srcset="">
+
 {% endblock %}
 
 
