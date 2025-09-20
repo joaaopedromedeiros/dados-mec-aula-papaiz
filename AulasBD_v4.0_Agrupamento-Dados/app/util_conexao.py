@@ -6,7 +6,7 @@ def obter_conexao():
     servidor = '.\SQLEXPRESS'
     banco    = 'cursos_superiores'
     usuario  = 'sa'
-    senha    = '12345' # poder ser também: "senha", "senha@123", "Senha@123"
+    senha    = 'senha123' # poder ser também: "senha", "senha@123", "Senha@123"
 
 
     # realiza conexao com o BD

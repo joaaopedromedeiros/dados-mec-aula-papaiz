@@ -7,14 +7,19 @@
 
 {% block conteudo %}
 
-    <div class="dashboard">
+<div class="dashboard">
 
-        <div class="card">
-            <h3>RN</h3>
-            <p>{{ count_ies|intcomma }}</p>
-        </div>
-        
+    {% if dados_campi %}
+        {% for item in dados_campi %}
+            <div class="card">
+                <h3>{{ item.uf }}</h3>
+                <p>{{ item.total_campi|intcomma }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum dado encontrado.</p>
+    {% endif %}
 
-    </div>
+</div>
 
 {% endblock %}

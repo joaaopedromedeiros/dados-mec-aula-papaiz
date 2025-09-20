@@ -7,14 +7,19 @@
 
 {% block conteudo %}
 
-    <div class="dashboard">
+<div class="dashboard">
 
-        <div class="card">
-            <h3>Arquitetura e construção</h3>
-            <p>{{ count_ies|intcomma }}</p>
-        </div>
-        
+    {% if dados_area %}
+        {% for item in dados_area %}
+            <div class="card">
+                <h3>{{ item.area }}</h3>
+                <p>{{ item.quantidade_cursos|intcomma }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum dado encontrado.</p>
+    {% endif %}
 
-    </div>
+</div>
 
 {% endblock %}

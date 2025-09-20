@@ -7,35 +7,31 @@
 
 {% block conteudo %}
 
-    <div class="dashboard">
+<div class="dashboard">
 
-        <table class="tabela-municipios">
-            <thead>
+    <table class="tabela-municipios">
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Município (UF)</th>
+                <th>Quantidade de Campi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for municipio in ranking_municipio %}
                 <tr>
-                    <th>Posição</th>
-                    <th>Município (UF)</th>
-                    <th>Quantidade de Campi</th>
+                    <td>{{ forloop.counter }}º</td>
+                    <td>{{ municipio.0 }} ({{ municipio.1 }})</td>
+                    <td>{{ municipio.2|intcomma }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr><td>1º</td><td>São Paulo (SP)</td><td>1.047</td></tr>
-                <tr><td>2º</td><td>Rio de Janeiro (RJ)</td><td>562</td></tr>
-                <tr><td>3º</td><td>Brasília (DF)</td><td>405</td></tr>
-                <tr><td>4º</td><td>Belo Horizonte (MG)</td><td>284</td></tr>
-                <tr><td>5º</td><td>Curitiba (PR)</td><td>232</td></tr>
-                <tr><td>6º</td><td>Salvador (BA)</td><td>223</td></tr>
-                <tr><td>7º</td><td>Fortaleza (CE)</td><td>222</td></tr>
-                <tr><td>8º</td><td>Porto Alegre (RS)</td><td>193</td></tr>
-                <tr><td>9º</td><td>Manaus (AM)</td><td>185</td></tr>
-                <tr><td>10º</td><td>Goiânia (GO)</td><td>160</td></tr>
-                <tr><td>11º</td><td>Recife (PE)</td><td>153</td></tr>
-                <tr><td>12º</td><td>Belém (PA)</td><td>148</td></tr>
-                <tr><td>13º</td><td>Campinas (SP)</td><td>130</td></tr>
-                <tr><td>14º</td><td>Guarulhos (SP)</td><td>120</td></tr>
-                <tr><td>15º</td><td>Teresina (PI)</td><td>115</td></tr>
-            </tbody>
-        </table>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum dado disponível.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    </div>
+</div>
 
 {% endblock %}
