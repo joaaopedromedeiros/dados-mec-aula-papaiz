@@ -1,0 +1,61 @@
+{% extends "base.html" %} 
+{% load humanize %}
+
+{% block titulo_pagina %}
+    <h2>Ranking dos cursos com mais Ofertas por UF com ENADE Médio >= 2,5</h2>
+    <h3>Serão exibidos um máximo de até 10 cursos por UF</h3>
+{% endblock %} 
+
+{% block conteudo %}
+
+    <div class="dashboard">
+
+        <table class="tabela-cursos">
+            <thead>
+                <tr>
+                    <th colspan="4" class="titulo">AC</th>
+                </tr>
+                <tr>
+                    <th>Posição</th>
+                    <th>Curso</th>
+                    <th>Ofertas</th>
+                    <th>ENADE<br><small>Méd[Min–Máx]</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1º</td>
+                    <td>GESTÃO DA TECNOLOGIA DA INFORMAÇÃO</td>
+                    <td>72</td>
+                    <td>2,96 [2–4]</td>
+                </tr>
+                <tr>
+                    <td>2º</td>
+                    <td>REDES DE COMPUTADORES</td>
+                    <td>54</td>
+                    <td>2,91 [2–3]</td>
+                </tr>
+                <tr>
+                    <td>3º</td>
+                    <td>FILOSOFIA</td>
+                    <td>11</td>
+                    <td>2,71 [2–3]</td>
+                </tr>
+                <tr>
+                    <td>4º</td>
+                    <td>DIREITO</td>
+                    <td>8</td>
+                    <td>3,75 [3–5]</td>
+                </tr>
+                <tr>
+                    <td>5º</td>
+                    <td>MEDICINA VETERINÁRIA</td>
+                    <td>6</td>
+                    <td>4,00 [4–4]</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

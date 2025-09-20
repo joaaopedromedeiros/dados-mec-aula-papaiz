@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load humanize %}
+
+{% block titulo_pagina %}
+    <h2>Cursos ofertados por área do conhecimento</h2>
+{% endblock %} 
+
+{% block conteudo %}
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h3>Arquitetura e construção</h3>
+            <p>{{ count_ies|intcomma }}</p>
+        </div>
+        
+
+    </div>
+
+{% endblock %}

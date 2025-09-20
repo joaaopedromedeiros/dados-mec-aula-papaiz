@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load humanize %}
+
+{% block titulo_pagina %}
+    <h2>Quantidade de campi por UF</h2>
+{% endblock %} 
+
+{% block conteudo %}
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h3>RN</h3>
+            <p>{{ count_ies|intcomma }}</p>
+        </div>
+        
+
+    </div>
+
+{% endblock %}
