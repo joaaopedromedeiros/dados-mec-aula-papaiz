@@ -8,54 +8,39 @@
 
 {% block conteudo %}
 
-    <div class="dashboard">
+<div style="display: flex; flex-direction: column; gap: 32px;">
 
-        <table class="tabela-cursos">
-            <thead>
-                <tr>
-                    <th colspan="4" class="titulo">AC</th>
-                </tr>
-                <tr>
-                    <th>Posição</th>
-                    <th>Curso</th>
-                    <th>Ofertas</th>
-                    <th>ENADE<br><small>Méd[Min–Máx]</small></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1º</td>
-                    <td>GESTÃO DA TECNOLOGIA DA INFORMAÇÃO</td>
-                    <td>72</td>
-                    <td>2,96 [2–4]</td>
-                </tr>
-                <tr>
-                    <td>2º</td>
-                    <td>REDES DE COMPUTADORES</td>
-                    <td>54</td>
-                    <td>2,91 [2–3]</td>
-                </tr>
-                <tr>
-                    <td>3º</td>
-                    <td>FILOSOFIA</td>
-                    <td>11</td>
-                    <td>2,71 [2–3]</td>
-                </tr>
-                <tr>
-                    <td>4º</td>
-                    <td>DIREITO</td>
-                    <td>8</td>
-                    <td>3,75 [3–5]</td>
-                </tr>
-                <tr>
-                    <td>5º</td>
-                    <td>MEDICINA VETERINÁRIA</td>
-                    <td>6</td>
-                    <td>4,00 [4–4]</td>
-                </tr>
-            </tbody>
-        </table>
+    {% if ranking_por_estado %}
+        {% for estado, cursos in ranking_por_estado.items %}
+            <table class="tabela-cursos">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="titulo">{{ estado }}</th>
+                    </tr>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Curso</th>
+                        <th>Ofertas</th>
+                        <th>ENADE<br><small>Méd[Min–Máx]</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for curso in cursos %}
+                        <tr>
+                            <td>{{ curso.posicao }}º</td>
+                            <td>{{ curso.curso }}</td>
+                            <td>{{ curso.ofertas|intcomma }}</td>
+                            <td>{{ curso.enade_media|floatformat:2 }} [{{ curso.enade_min }}–{{ curso.enade_max }}]</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum dado encontrado.</p>
+    {% endif %}
 
-    </div>
+</div>
 
 {% endblock %}

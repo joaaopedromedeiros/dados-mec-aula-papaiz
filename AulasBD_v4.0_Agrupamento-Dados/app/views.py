@@ -87,7 +87,21 @@ def ranking_dos_cursos_por_uf(request):
         cursor.execute(sql)
         ranking_uf = cursor.fetchall()  # [(nome, estado, ofertas, enade_min, enade_max, enade_media, rn), ...]
 
-        return render(request, template, context={'ranking_uf': ranking_uf})
+        # Agrupar por estado
+        ranking_por_estado = {}
+        for nome, estado, ofertas, enade_min, enade_max, enade_media, rn in ranking_uf:
+            if estado not in ranking_por_estado:
+                ranking_por_estado[estado] = []
+            ranking_por_estado[estado].append({
+                'posicao': rn,
+                'curso': nome,
+                'ofertas': ofertas,
+                'enade_min': enade_min,
+                'enade_max': enade_max,
+                'enade_media': enade_media
+            })
+
+        return render(request, template, context={'ranking_por_estado': ranking_por_estado})
 
     except Exception as err:
         return render(request, template, context={'ERRO': err})
